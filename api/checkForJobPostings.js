@@ -12,7 +12,7 @@ const recipientPhone2 = process.env.PHONE_TO2;
 const fromPhone = process.env.TWILIO_PHONE_NUMBER;
 const lastJobIdFile = '/tmp/lastJobId.txt'; // Temporary storage in Vercel
 
-async function checkForNewJobPostings(req, res) {
+export default async function  checkForNewJobPostings(req, res) {
   try {
     const apiUrl = 'https://api.sitewrench.com/pageparts/jobpostingmodule/250236/postings?token=2373398b7dd8a26ba45f0a19e03653bf2148b117&siteId=2332&hideExpired=true&jobCategory=86&searchTerm=&onlyApproved=true&sortBy=DateOpens&sortDesc=true&limit=100&onlyMyOrg=false&hideDeleted=true';
     const response = await axios.get(apiUrl);
