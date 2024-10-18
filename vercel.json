@@ -1,0 +1,13 @@
+{
+    "functions": {
+      "api/checkJobPostings.js": {
+        "runtime": "nodejs16.x"
+      }
+    },
+    "crons": [
+      {
+        "path": "/api/checkJobPostings",
+        "schedule": "0 */12 * * *"
+      }
+    ]
+}
