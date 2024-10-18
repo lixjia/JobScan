@@ -4,7 +4,7 @@ const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = twilio(accountSid, authToken);
 const recipientPhone = process.env.PHONE_TO; 
-const fromPhone = process.env.PHONE_FROM; // Add the recipient's phone number
+const fromPhone = process.env.TWILIO_PHONE_NUMBER; 
 
 
   // File to store the latest job posting ID
@@ -57,7 +57,7 @@ async function sendSmsAlert(job) {
   try {
     await client.messages.create({
       body: message,
-      from: fromPhone, // Your Twilio phone number
+      from: fromPhone,
       to: recipientPhone,
     });
     console.log('SMS alert sent.');
