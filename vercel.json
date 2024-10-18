@@ -7,7 +7,7 @@
     "crons": [
       {
         "path": "/api/checkForJobPostings",
-        "schedule": "0 */12 * * *"
+        "schedule": "0 0 * * *"
       }
     ]
 }
