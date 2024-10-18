@@ -7,7 +7,8 @@ if (process.env.NODE_ENV !== 'production') {
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = twilio(accountSid, authToken);
-const recipientPhone = process.env.PHONE_TO;
+const recipientPhone1 = process.env.PHONE_TO1;
+const recipientPhone2 = process.env.PHONE_TO2;
 const fromPhone = process.env.TWILIO_PHONE_NUMBER;
 const lastJobIdFile = '/tmp/lastJobId.txt'; // Temporary storage in Vercel
 
@@ -47,14 +48,19 @@ async function checkForNewJobPostings(req, res) {
 }
 
 async function sendSmsAlert(job) {
-  const message = `New job posting: ${job.Title}\nDetails: ${job.Description.replace(/(<([^>]+)>)/gi, "")}`;
+  const message = `New job posting: ${job.Title}\nDetails: ${job.Description.replace(/(<([^>]+)>)/gi, "")}\nVisit: https://www.aza.org/jobs`;
   
   try {
     await client.messages.create({
       body: message,
       from: fromPhone,
-      to: recipientPhone,
+      to: recipientPhone1,
     });
+    await client.messages.create({
+        body: message,
+        from: fromPhone,
+        to: recipientPhone2,
+      });
     console.log('SMS alert sent.');
   } catch (error) {
     console.error('Failed to send SMS:', error);
