@@ -1,7 +1,7 @@
 {
     "functions": {
       "api/checkForJobPostings.js": {
-        "runtime": "nodejs21.x"
+        "runtime": "nodejs@21.x"
       }
     },
     "crons": [
